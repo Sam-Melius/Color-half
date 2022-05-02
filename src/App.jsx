@@ -4,13 +4,15 @@ import {
   BrowserRouter as Router,
   Route,
   useParams,
+  Switch
 } from 'react-router-dom';
 
 import styles from './App.css';
 
 function RGB() {
   // 🚨 Get values for r, g, and b from params
-  const {r, g, b } = useParams;
+  const { r, g, b } = useParams();
+  
   // 🚨 Uncomment next lines after importing
   return (
   <div
@@ -23,7 +25,13 @@ function RGB() {
 }
 
 function ScreenColor() {
-  return <div>{/* Create Route Inside Switch */}</div>;
+  return (<div>
+    <Switch>
+      <Route exact path='/rgb/:r/:g/:b'>
+        <RGB />
+      </Route>
+    </Switch>
+  </div>);
 }
 
 export default function App() {
